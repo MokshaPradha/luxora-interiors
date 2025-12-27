@@ -1,22 +1,22 @@
-import { Link } from "wouter";
-import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from "lucide-react";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
-import { useState } from "react";
-import { useApp } from "../context/AppContext";
+import { Link } from 'wouter';
+import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from 'lucide-react';
+import { Input } from './ui/input';
+import { Button } from './ui/button';
+import { useState } from 'react';
+import { useApp } from '../context/AppContext';
 
 export function Footer() {
   const { subscribeNewsletter } = useApp();
-  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterEmail, setNewsletterEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newsletterEmail) return;
-    
+
     setIsSubmitting(true);
     await subscribeNewsletter(newsletterEmail);
-    setNewsletterEmail("");
+    setNewsletterEmail('');
     setIsSubmitting(false);
   };
 
@@ -32,7 +32,9 @@ export function Footer() {
               </div>
               <div>
                 <div className="tracking-wider">LUXORA</div>
-                <div className="opacity-60" style={{ fontSize: '10px', letterSpacing: '2px' }}>INTERIORS</div>
+                <div className="opacity-60" style={{ fontSize: '10px', letterSpacing: '2px' }}>
+                  INTERIORS
+                </div>
               </div>
             </div>
             <p className="opacity-80 mb-4">
@@ -88,19 +90,29 @@ export function Footer() {
             <h3 className="mb-4">Customer Service</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="opacity-80 hover:text-accent transition-colors">My Account</a>
+                <a href="#" className="opacity-80 hover:text-accent transition-colors">
+                  My Account
+                </a>
               </li>
               <li>
-                <a href="#" className="opacity-80 hover:text-accent transition-colors">Order Tracking</a>
+                <a href="#" className="opacity-80 hover:text-accent transition-colors">
+                  Order Tracking
+                </a>
               </li>
               <li>
-                <a href="#" className="opacity-80 hover:text-accent transition-colors">Shipping & Returns</a>
+                <a href="#" className="opacity-80 hover:text-accent transition-colors">
+                  Shipping & Returns
+                </a>
               </li>
               <li>
-                <a href="#" className="opacity-80 hover:text-accent transition-colors">Privacy Policy</a>
+                <a href="#" className="opacity-80 hover:text-accent transition-colors">
+                  Privacy Policy
+                </a>
               </li>
               <li>
-                <a href="#" className="opacity-80 hover:text-accent transition-colors">Terms & Conditions</a>
+                <a href="#" className="opacity-80 hover:text-accent transition-colors">
+                  Terms & Conditions
+                </a>
               </li>
             </ul>
           </div>
@@ -133,7 +145,7 @@ export function Footer() {
                   className="bg-primary-foreground text-foreground"
                   required
                 />
-                <Button 
+                <Button
                   type="submit"
                   disabled={isSubmitting}
                   className="bg-accent text-accent-foreground hover:bg-accent/90"

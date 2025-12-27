@@ -1,27 +1,29 @@
-import { useState } from "react";
-import { Link, useLocation } from "wouter";
-import { Search, ShoppingCart, Heart, User, Menu, X } from "lucide-react";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "./ui/sheet";
+import { useState } from 'react';
+import { Link, useLocation } from 'wouter';
+import { Search, ShoppingCart, Heart, User, Menu, X } from 'lucide-react';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
 
-export function Navbar({ cartCount = 0, wishlistCount = 0 }: { cartCount?: number; wishlistCount?: number }) {
+export function Navbar({
+  cartCount = 0,
+  wishlistCount = 0,
+}: {
+  cartCount?: number;
+  wishlistCount?: number;
+}) {
   const [location, setLocation] = useLocation();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
 
   const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/shop", label: "Shop" },
-    { href: "/interior-services", label: "Interior Design" },
-    { href: "/about", label: "About" },
-    { href: "/blog", label: "Blog" },
-    { href: "/contact", label: "Contact" },
+    { href: '/', label: 'Home' },
+    { href: '/shop', label: 'Shop' },
+    { href: '/interior-services', label: 'Interior Design' },
+    { href: '/about', label: 'About' },
+    { href: '/blog', label: 'Blog' },
+    { href: '/contact', label: 'Contact' },
   ];
 
   return (
@@ -32,11 +34,15 @@ export function Navbar({ cartCount = 0, wishlistCount = 0 }: { cartCount?: numbe
           <Link href="/">
             <a className="flex items-center space-x-2 group">
               <div className="w-10 h-10 bg-primary rounded-md flex items-center justify-center group-hover:bg-accent transition-colors">
-                <span className="text-primary-foreground group-hover:text-accent-foreground">L</span>
+                <span className="text-primary-foreground group-hover:text-accent-foreground">
+                  L
+                </span>
               </div>
               <div>
                 <div className="tracking-wider">LUXORA</div>
-                <div className="opacity-60" style={{ fontSize: '10px', letterSpacing: '2px' }}>INTERIORS</div>
+                <div className="opacity-60" style={{ fontSize: '10px', letterSpacing: '2px' }}>
+                  INTERIORS
+                </div>
               </div>
             </a>
           </Link>
@@ -47,7 +53,7 @@ export function Navbar({ cartCount = 0, wishlistCount = 0 }: { cartCount?: numbe
               <Link key={link.href} href={link.href}>
                 <a
                   className={`hover:text-accent transition-colors ${
-                    location === link.href ? "text-accent" : ""
+                    location === link.href ? 'text-accent' : ''
                   }`}
                 >
                   {link.label}
@@ -74,7 +80,10 @@ export function Navbar({ cartCount = 0, wishlistCount = 0 }: { cartCount?: numbe
                 <Button variant="ghost" size="icon" className="relative">
                   <Heart className="w-5 h-5" />
                   {wishlistCount > 0 && (
-                    <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-accent-foreground rounded-full flex items-center justify-center" style={{ fontSize: '10px' }}>
+                    <span
+                      className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-accent-foreground rounded-full flex items-center justify-center"
+                      style={{ fontSize: '10px' }}
+                    >
                       {wishlistCount}
                     </span>
                   )}
@@ -88,7 +97,10 @@ export function Navbar({ cartCount = 0, wishlistCount = 0 }: { cartCount?: numbe
                 <Button variant="ghost" size="icon" className="relative">
                   <ShoppingCart className="w-5 h-5" />
                   {cartCount > 0 && (
-                    <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-accent-foreground rounded-full flex items-center justify-center" style={{ fontSize: '10px' }}>
+                    <span
+                      className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-accent-foreground rounded-full flex items-center justify-center"
+                      style={{ fontSize: '10px' }}
+                    >
                       {cartCount}
                     </span>
                   )}
@@ -119,7 +131,7 @@ export function Navbar({ cartCount = 0, wishlistCount = 0 }: { cartCount?: numbe
                       <a
                         onClick={() => setMobileMenuOpen(false)}
                         className={`block hover:text-accent transition-colors ${
-                          location === link.href ? "text-accent" : ""
+                          location === link.href ? 'text-accent' : ''
                         }`}
                       >
                         {link.label}
@@ -151,13 +163,13 @@ export function Navbar({ cartCount = 0, wishlistCount = 0 }: { cartCount?: numbe
         {/* Search Bar */}
         {isSearchOpen && (
           <div className="mt-4 animate-in fade-in slide-in-from-top-2">
-            <form 
+            <form
               onSubmit={(e) => {
                 e.preventDefault();
                 if (searchQuery.trim()) {
                   setLocation(`/shop?search=${encodeURIComponent(searchQuery)}`);
                   setIsSearchOpen(false);
-                  setSearchQuery("");
+                  setSearchQuery('');
                 }
               }}
               className="relative"

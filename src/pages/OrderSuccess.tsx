@@ -1,11 +1,11 @@
-import { Link } from "wouter";
-import { CheckCircle, Package, ArrowRight } from "lucide-react";
-import { Button } from "../components/ui/button";
-import { Card, CardContent } from "../components/ui/card";
-import { motion } from "motion/react";
+import { Link } from 'wouter';
+import { CheckCircle, Package, ArrowRight } from 'lucide-react';
+import { Button } from '../components/ui/button';
+import { Card, CardContent } from '../components/ui/card';
+import { motion } from 'motion/react';
 
 export function OrderSuccess() {
-  const orderId = "LX" + Math.random().toString(36).substr(2, 9).toUpperCase();
+  const orderId = 'LX' + Math.random().toString(36).substr(2, 9).toUpperCase();
   const estimatedDelivery = new Date();
   estimatedDelivery.setDate(estimatedDelivery.getDate() + 7);
 
@@ -40,7 +40,9 @@ export function OrderSuccess() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <p className="text-muted-foreground mb-2">Order ID</p>
-                    <p className="text-accent" style={{ fontSize: '1.25rem' }}>{orderId}</p>
+                    <p className="text-accent" style={{ fontSize: '1.25rem' }}>
+                      {orderId}
+                    </p>
                   </div>
                   <div>
                     <p className="text-muted-foreground mb-2">Estimated Delivery</p>
@@ -48,7 +50,7 @@ export function OrderSuccess() {
                       {estimatedDelivery.toLocaleDateString('en-US', {
                         month: 'long',
                         day: 'numeric',
-                        year: 'numeric'
+                        year: 'numeric',
                       })}
                     </p>
                   </div>
@@ -74,7 +76,10 @@ export function OrderSuccess() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/profile">
                 <a>
-                  <Button size="lg" className="bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground">
+                  <Button
+                    size="lg"
+                    className="bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground"
+                  >
                     View Orders
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
@@ -98,7 +103,7 @@ export function OrderSuccess() {
             className="mt-12 text-center"
           >
             <p className="text-muted-foreground mb-4">
-              Need help with your order? Contact us at{" "}
+              Need help with your order? Contact us at{' '}
               <a href="mailto:support@luxora.com" className="text-accent hover:underline">
                 support@luxora.com
               </a>

@@ -1,21 +1,21 @@
-import { useState } from "react";
-import { Link } from "wouter";
-import { Eye, EyeOff } from "lucide-react";
-import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
-import { Label } from "../components/ui/label";
-import { Card, CardContent } from "../components/ui/card";
-import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import { motion } from "motion/react";
-import { useApp } from "../context/AppContext";
+import { useState } from 'react';
+import { Link } from 'wouter';
+import { Eye, EyeOff } from 'lucide-react';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
+import { Card, CardContent } from '../components/ui/card';
+import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { motion } from 'motion/react';
+import { useApp } from '../context/AppContext';
 
 export function Login() {
   const { login } = useApp();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
-    email: "",
-    password: ""
+    email: '',
+    password: '',
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -47,8 +47,12 @@ export function Login() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8 text-primary-foreground">
-                <h2 className="mb-2" style={{ fontSize: '2rem' }}>Welcome Back</h2>
-                <p className="opacity-90">Access your account to continue shopping and managing your orders</p>
+                <h2 className="mb-2" style={{ fontSize: '2rem' }}>
+                  Welcome Back
+                </h2>
+                <p className="opacity-90">
+                  Access your account to continue shopping and managing your orders
+                </p>
               </div>
             </div>
           </motion.div>
@@ -62,8 +66,12 @@ export function Login() {
             <Card>
               <CardContent className="p-8">
                 <div className="text-center mb-8">
-                  <h1 className="mb-2" style={{ fontSize: '2rem' }}>Sign In</h1>
-                  <p className="text-muted-foreground">Enter your credentials to access your account</p>
+                  <h1 className="mb-2" style={{ fontSize: '2rem' }}>
+                    Sign In
+                  </h1>
+                  <p className="text-muted-foreground">
+                    Enter your credentials to access your account
+                  </p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -84,7 +92,7 @@ export function Login() {
                     <div className="relative">
                       <Input
                         id="password"
-                        type={showPassword ? "text" : "password"}
+                        type={showPassword ? 'text' : 'password'}
                         value={formData.password}
                         onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                         placeholder="Enter your password"
@@ -95,7 +103,11 @@ export function Login() {
                         onClick={() => setShowPassword(!showPassword)}
                         className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
                       >
-                        {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                        {showPassword ? (
+                          <EyeOff className="w-5 h-5" />
+                        ) : (
+                          <Eye className="w-5 h-5" />
+                        )}
                       </button>
                     </div>
                   </div>
@@ -110,8 +122,13 @@ export function Login() {
                     </a>
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground" disabled={isLoading}>
-                    {isLoading ? "Signing In..." : "Sign In"}
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? 'Signing In...' : 'Sign In'}
                   </Button>
 
                   <div className="relative">
@@ -147,7 +164,7 @@ export function Login() {
                 </form>
 
                 <p className="text-center mt-6 text-muted-foreground">
-                  Don't have an account?{" "}
+                  Don't have an account?{' '}
                   <Link href="/signup">
                     <a className="text-accent hover:underline">Sign up</a>
                   </Link>

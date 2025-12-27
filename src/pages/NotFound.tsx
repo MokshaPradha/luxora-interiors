@@ -1,7 +1,7 @@
-import { Link } from "wouter";
-import { Home, Search } from "lucide-react";
-import { Button } from "../components/ui/button";
-import { motion } from "motion/react";
+import { Link } from 'wouter';
+import { Home, Search } from 'lucide-react';
+import { Button } from '../components/ui/button';
+import { motion } from 'motion/react';
 
 export function NotFound() {
   return (
@@ -16,7 +16,7 @@ export function NotFound() {
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              transition={{ delay: 0.2, type: "spring" }}
+              transition={{ delay: 0.2, type: 'spring' }}
               className="inline-block"
             >
               <svg
@@ -36,13 +36,13 @@ export function NotFound() {
             </motion.div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            <h1 className="mb-4" style={{ fontSize: '4rem', color: 'var(--accent)' }}>404</h1>
-            <h2 className="mb-4" style={{ fontSize: '2rem' }}>Page Not Found</h2>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
+            <h1 className="mb-4" style={{ fontSize: '4rem', color: 'var(--accent)' }}>
+              404
+            </h1>
+            <h2 className="mb-4" style={{ fontSize: '2rem' }}>
+              Page Not Found
+            </h2>
             <p className="text-muted-foreground mb-8 max-w-md mx-auto">
               Oops! The page you're looking for doesn't exist. It might have been moved or deleted.
             </p>
@@ -50,7 +50,10 @@ export function NotFound() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/">
                 <a>
-                  <Button size="lg" className="bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground">
+                  <Button
+                    size="lg"
+                    className="bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground"
+                  >
                     <Home className="mr-2 w-5 h-5" />
                     Back to Home
                   </Button>
@@ -74,7 +77,7 @@ export function NotFound() {
             className="mt-12"
           >
             <p className="text-muted-foreground">
-              Need help?{" "}
+              Need help?{' '}
               <Link href="/contact">
                 <a className="text-accent hover:underline">Contact us</a>
               </Link>
