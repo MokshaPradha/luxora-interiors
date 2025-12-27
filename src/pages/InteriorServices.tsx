@@ -1,119 +1,128 @@
-import { useState } from "react";
-import { Check, ArrowRight } from "lucide-react";
-import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
-import { Textarea } from "../components/ui/textarea";
-import { Label } from "../components/ui/label";
-import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import { Card, CardContent } from "../components/ui/card";
-import { Badge } from "../components/ui/badge";
-import { motion } from "motion/react";
+import { useState } from 'react';
+import { Check, ArrowRight } from 'lucide-react';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Textarea } from '../components/ui/textarea';
+import { Label } from '../components/ui/label';
+import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { Card, CardContent } from '../components/ui/card';
+import { Badge } from '../components/ui/badge';
+import { motion } from 'motion/react';
 
 export function InteriorServices() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    service: "",
-    message: ""
+    name: '',
+    email: '',
+    phone: '',
+    service: '',
+    message: '',
   });
 
   const packages = [
     {
-      id: "basic",
-      name: "Basic Room Design",
+      id: 'basic',
+      name: 'Basic Room Design',
       price: 1499,
-      duration: "2-3 weeks",
+      duration: '2-3 weeks',
       features: [
-        "Single room consultation",
-        "Mood board creation",
-        "Color palette selection",
-        "Furniture recommendations",
-        "Shopping list",
-        "Email support"
+        'Single room consultation',
+        'Mood board creation',
+        'Color palette selection',
+        'Furniture recommendations',
+        'Shopping list',
+        'Email support',
       ],
-      image: "https://images.unsplash.com/photo-1594296220371-a34da13ff6d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080"
+      image:
+        'https://images.unsplash.com/photo-1594296220371-a34da13ff6d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080',
     },
     {
-      id: "premium",
-      name: "Premium Living Space",
+      id: 'premium',
+      name: 'Premium Living Space',
       price: 3999,
-      duration: "4-6 weeks",
+      duration: '4-6 weeks',
       popular: true,
       features: [
-        "Up to 3 rooms",
-        "3D visualization",
-        "Custom furniture design",
-        "Material & finish selection",
-        "Shopping assistance",
-        "Project management",
-        "On-site consultation",
-        "Priority support"
+        'Up to 3 rooms',
+        '3D visualization',
+        'Custom furniture design',
+        'Material & finish selection',
+        'Shopping assistance',
+        'Project management',
+        'On-site consultation',
+        'Priority support',
       ],
-      image: "https://images.unsplash.com/photo-1638885930125-85350348d266?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080"
+      image:
+        'https://images.unsplash.com/photo-1638885930125-85350348d266?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080',
     },
     {
-      id: "luxury",
-      name: "Full Home Interiors",
+      id: 'luxury',
+      name: 'Full Home Interiors',
       price: 9999,
-      duration: "8-12 weeks",
+      duration: '8-12 weeks',
       features: [
-        "Complete home design",
-        "Architectural consultation",
-        "Custom furniture & fixtures",
-        "Lighting design",
-        "Art curation",
-        "Contractor coordination",
-        "Installation supervision",
-        "Dedicated designer",
-        "24/7 support"
+        'Complete home design',
+        'Architectural consultation',
+        'Custom furniture & fixtures',
+        'Lighting design',
+        'Art curation',
+        'Contractor coordination',
+        'Installation supervision',
+        'Dedicated designer',
+        '24/7 support',
       ],
-      image: "https://images.unsplash.com/photo-1581784878214-8d5596b98a01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080"
-    }
+      image:
+        'https://images.unsplash.com/photo-1581784878214-8d5596b98a01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080',
+    },
   ];
 
   const portfolio = [
     {
-      id: "1",
-      title: "Modern Luxury Living Room",
-      category: "Residential",
-      image: "https://images.unsplash.com/photo-1638885930125-85350348d266?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080"
+      id: '1',
+      title: 'Modern Luxury Living Room',
+      category: 'Residential',
+      image:
+        'https://images.unsplash.com/photo-1638885930125-85350348d266?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080',
     },
     {
-      id: "2",
-      title: "Elegant Bedroom Suite",
-      category: "Residential",
-      image: "https://images.unsplash.com/photo-1594296220371-a34da13ff6d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080"
+      id: '2',
+      title: 'Elegant Bedroom Suite',
+      category: 'Residential',
+      image:
+        'https://images.unsplash.com/photo-1594296220371-a34da13ff6d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080',
     },
     {
-      id: "3",
-      title: "Contemporary Office Space",
-      category: "Commercial",
-      image: "https://images.unsplash.com/photo-1617403493677-a0cbfc484010?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080"
+      id: '3',
+      title: 'Contemporary Office Space',
+      category: 'Commercial',
+      image:
+        'https://images.unsplash.com/photo-1617403493677-a0cbfc484010?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080',
     },
     {
-      id: "4",
-      title: "Luxury Kitchen Design",
-      category: "Residential",
-      image: "https://images.unsplash.com/photo-1620086464194-5127366b51ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080"
+      id: '4',
+      title: 'Luxury Kitchen Design',
+      category: 'Residential',
+      image:
+        'https://images.unsplash.com/photo-1620086464194-5127366b51ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080',
     },
     {
-      id: "5",
-      title: "Minimalist Dining Space",
-      category: "Residential",
-      image: "https://images.unsplash.com/photo-1593136596203-7212b076f4d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080"
+      id: '5',
+      title: 'Minimalist Dining Space',
+      category: 'Residential',
+      image:
+        'https://images.unsplash.com/photo-1593136596203-7212b076f4d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080',
     },
     {
-      id: "6",
-      title: "Premium Home Office",
-      category: "Commercial",
-      image: "https://images.unsplash.com/photo-1617403493677-a0cbfc484010?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080"
-    }
+      id: '6',
+      title: 'Premium Home Office',
+      category: 'Commercial',
+      image:
+        'https://images.unsplash.com/photo-1617403493677-a0cbfc484010?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080',
+    },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    console.log('Form submitted:', formData);
     alert("Thank you! We'll contact you within 24 hours.");
   };
 
@@ -139,7 +148,8 @@ export function InteriorServices() {
               Professional Interior Design Services
             </h1>
             <p className="mb-6 opacity-90" style={{ fontSize: '1.1rem' }}>
-              Transform your space with our expert designers. From concept to completion, we create interiors that inspire.
+              Transform your space with our expert designers. From concept to completion, we create
+              interiors that inspire.
             </p>
             <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
               Get Free Consultation
@@ -158,7 +168,9 @@ export function InteriorServices() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="mb-4" style={{ fontSize: '2.5rem' }}>Design Packages</h2>
+            <h2 className="mb-4" style={{ fontSize: '2.5rem' }}>
+              Design Packages
+            </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Choose the perfect package for your project needs
             </p>
@@ -173,7 +185,9 @@ export function InteriorServices() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card className={`relative overflow-hidden h-full ${pkg.popular ? "border-accent border-2" : ""}`}>
+                <Card
+                  className={`relative overflow-hidden h-full ${pkg.popular ? 'border-accent border-2' : ''}`}
+                >
                   {pkg.popular && (
                     <Badge className="absolute top-4 right-4 bg-accent text-accent-foreground">
                       Most Popular
@@ -189,7 +203,9 @@ export function InteriorServices() {
                   <CardContent className="p-6">
                     <h3 className="mb-2">{pkg.name}</h3>
                     <div className="mb-2">
-                      <span className="text-accent" style={{ fontSize: '2rem' }}>${pkg.price}</span>
+                      <span className="text-accent" style={{ fontSize: '2rem' }}>
+                        ${pkg.price}
+                      </span>
                     </div>
                     <p className="text-muted-foreground mb-6">{pkg.duration}</p>
                     <ul className="space-y-3 mb-6">
@@ -220,7 +236,9 @@ export function InteriorServices() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="mb-4" style={{ fontSize: '2.5rem' }}>Our Portfolio</h2>
+            <h2 className="mb-4" style={{ fontSize: '2.5rem' }}>
+              Our Portfolio
+            </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Explore our recent projects and get inspired
             </p>
@@ -263,7 +281,9 @@ export function InteriorServices() {
               viewport={{ once: true }}
               className="text-center mb-12"
             >
-              <h2 className="mb-4" style={{ fontSize: '2.5rem' }}>Book Free Consultation</h2>
+              <h2 className="mb-4" style={{ fontSize: '2.5rem' }}>
+                Book Free Consultation
+              </h2>
               <p className="text-muted-foreground">
                 Tell us about your project and we'll get back to you within 24 hours
               </p>
@@ -333,7 +353,11 @@ export function InteriorServices() {
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground">
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground"
+                  >
                     Submit Consultation Request
                   </Button>
                 </form>

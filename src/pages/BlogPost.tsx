@@ -1,18 +1,18 @@
-import { useRoute, Link } from "wouter";
-import { Calendar, User, ArrowLeft, Share2, Heart } from "lucide-react";
-import { Button } from "../components/ui/button";
-import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import { Badge } from "../components/ui/badge";
-import { motion } from "motion/react";
+import { useRoute, Link } from 'wouter';
+import { Calendar, User, ArrowLeft, Share2, Heart } from 'lucide-react';
+import { Button } from '../components/ui/button';
+import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { Badge } from '../components/ui/badge';
+import { motion } from 'motion/react';
 
 export function BlogPost() {
-  const [, params] = useRoute("/blog/:id");
-  
+  const [, params] = useRoute('/blog/:id');
+
   // Mock blog posts database
   const blogPosts = {
-    "1": {
-      id: "1",
-      title: "10 Essential Tips for Creating a Luxury Living Room",
+    '1': {
+      id: '1',
+      title: '10 Essential Tips for Creating a Luxury Living Room',
       content: `
         <p>Creating a luxury living room is an art that combines elegance, comfort, and functionality. Whether you're starting from scratch or renovating an existing space, these essential tips will help you achieve a sophisticated and inviting atmosphere that reflects your personal style.</p>
         
@@ -48,16 +48,18 @@ export function BlogPost() {
         
         <p>Remember, creating a luxury living room is a journey, not a destination. Take your time to source pieces you truly love, and don't be afraid to invest in quality over quantity. The result will be a space that not only looks beautiful but feels authentically you.</p>
       `,
-      excerpt: "Discover the secrets to designing a living room that exudes elegance and comfort. From furniture selection to color palettes, we cover it all.",
-      image: "https://images.unsplash.com/photo-1638885930125-85350348d266?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-      author: "Sophia Martinez",
-      date: "Nov 10, 2025",
-      category: "Interior Tips",
-      readTime: "5 min read"
+      excerpt:
+        'Discover the secrets to designing a living room that exudes elegance and comfort. From furniture selection to color palettes, we cover it all.',
+      image:
+        'https://images.unsplash.com/photo-1638885930125-85350348d266?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080',
+      author: 'Sophia Martinez',
+      date: 'Nov 10, 2025',
+      category: 'Interior Tips',
+      readTime: '5 min read',
     },
-    "2": {
-      id: "2",
-      title: "Trending Furniture Styles for 2025",
+    '2': {
+      id: '2',
+      title: 'Trending Furniture Styles for 2025',
       content: `
         <p>As we move through 2025, the furniture industry continues to evolve with fresh trends that balance aesthetics, functionality, and sustainability. Here's what's defining the furniture landscape this year.</p>
         
@@ -79,16 +81,18 @@ export function BlogPost() {
         <h2>Mixed Materials</h2>
         <p>Combining different materials in a single piece creates depth and interest. Expect to see metal and wood combinations, marble with brass accents, and glass paired with natural fibers.</p>
       `,
-      excerpt: "Stay ahead of the curve with the latest furniture trends. From minimalist designs to bold statement pieces, explore what's hot this year.",
-      image: "https://images.unsplash.com/photo-1722268994698-b85790171832?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-      author: "James Anderson",
-      date: "Nov 8, 2025",
-      category: "Trends",
-      readTime: "7 min read"
+      excerpt:
+        "Stay ahead of the curve with the latest furniture trends. From minimalist designs to bold statement pieces, explore what's hot this year.",
+      image:
+        'https://images.unsplash.com/photo-1722268994698-b85790171832?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080',
+      author: 'James Anderson',
+      date: 'Nov 8, 2025',
+      category: 'Trends',
+      readTime: '7 min read',
     },
-    "3": {
-      id: "3",
-      title: "The Perfect Color Palette Guide for Modern Homes",
+    '3': {
+      id: '3',
+      title: 'The Perfect Color Palette Guide for Modern Homes',
       content: `
         <p>Color has the power to transform any space, affecting mood, perception, and overall ambiance. Creating the perfect color palette for your modern home requires understanding color theory, your personal preferences, and how different hues work together.</p>
         
@@ -104,16 +108,18 @@ export function BlogPost() {
         <h2>Testing Before Committing</h2>
         <p>Always test paint colors in your actual space. Light changes throughout the day, affecting how colors appear. Paint large swatches on different walls and observe them in morning, afternoon, and evening light before making your final decision.</p>
       `,
-      excerpt: "Color can transform a space. Learn how to choose and combine colors to create harmonious and stunning interiors.",
-      image: "https://images.unsplash.com/photo-1594296220371-a34da13ff6d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-      author: "Emma Thompson",
-      date: "Nov 5, 2025",
-      category: "Color Guide",
-      readTime: "6 min read"
+      excerpt:
+        'Color can transform a space. Learn how to choose and combine colors to create harmonious and stunning interiors.',
+      image:
+        'https://images.unsplash.com/photo-1594296220371-a34da13ff6d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080',
+      author: 'Emma Thompson',
+      date: 'Nov 5, 2025',
+      category: 'Color Guide',
+      readTime: '6 min read',
     },
-    "4": {
-      id: "4",
-      title: "Sustainable Furniture: Beauty Meets Responsibility",
+    '4': {
+      id: '4',
+      title: 'Sustainable Furniture: Beauty Meets Responsibility',
       content: `
         <p>Sustainable furniture represents the intersection of environmental consciousness and exceptional design. Today's eco-friendly options prove that you don't have to sacrifice style for sustainability.</p>
         
@@ -129,16 +135,18 @@ export function BlogPost() {
         <h2>Supporting Sustainable Brands</h2>
         <p>Research brands' sustainability practices. Look for transparency in sourcing, manufacturing, and business practices. Many companies now offer detailed information about their environmental initiatives and certifications.</p>
       `,
-      excerpt: "Explore eco-friendly furniture options that don't compromise on style. Learn about sustainable materials and practices.",
-      image: "https://images.unsplash.com/photo-1631563642459-ae1b71341a5f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-      author: "David Chen",
-      date: "Nov 2, 2025",
-      category: "Sustainability",
-      readTime: "8 min read"
+      excerpt:
+        "Explore eco-friendly furniture options that don't compromise on style. Learn about sustainable materials and practices.",
+      image:
+        'https://images.unsplash.com/photo-1631563642459-ae1b71341a5f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080',
+      author: 'David Chen',
+      date: 'Nov 2, 2025',
+      category: 'Sustainability',
+      readTime: '8 min read',
     },
-    "5": {
-      id: "5",
-      title: "Small Space, Big Impact: Maximizing Compact Living",
+    '5': {
+      id: '5',
+      title: 'Small Space, Big Impact: Maximizing Compact Living',
       content: `
         <p>Living in a small space doesn't mean compromising on style or functionality. With smart design choices and creative solutions, even the most compact areas can feel spacious, organized, and beautiful.</p>
         
@@ -154,16 +162,18 @@ export function BlogPost() {
         <h2>Strategic Mirror Placement</h2>
         <p>Mirrors reflect light and create the illusion of more space. Place large mirrors opposite windows to maximize natural light, or use mirrored furniture for subtle space expansion.</p>
       `,
-      excerpt: "Make the most of limited space with clever furniture choices and design tricks that create the illusion of spaciousness.",
-      image: "https://images.unsplash.com/photo-1656699170530-21004fb9ec2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-      author: "Sophia Martinez",
-      date: "Oct 28, 2025",
-      category: "Space Planning",
-      readTime: "6 min read"
+      excerpt:
+        'Make the most of limited space with clever furniture choices and design tricks that create the illusion of spaciousness.',
+      image:
+        'https://images.unsplash.com/photo-1656699170530-21004fb9ec2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080',
+      author: 'Sophia Martinez',
+      date: 'Oct 28, 2025',
+      category: 'Space Planning',
+      readTime: '6 min read',
     },
-    "6": {
-      id: "6",
-      title: "Mixing Textures: The Key to Depth and Interest",
+    '6': {
+      id: '6',
+      title: 'Mixing Textures: The Key to Depth and Interest',
       content: `
         <p>Texture is one of the most powerful yet underutilized tools in interior design. By thoughtfully combining different textures, you can create spaces with remarkable depth, warmth, and visual interest.</p>
         
@@ -179,21 +189,23 @@ export function BlogPost() {
         <h2>Balancing Rough and Smooth</h2>
         <p>Pair rough textures like reclaimed wood or concrete with smooth surfaces like glass or polished metal. This contrast creates tension and interest while maintaining harmony in your design.</p>
       `,
-      excerpt: "Learn how to layer different textures to add dimension and visual interest to any room in your home.",
-      image: "https://images.unsplash.com/photo-1673201102066-b0599d45002b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-      author: "Emma Thompson",
-      date: "Oct 25, 2025",
-      category: "Design Tips",
-      readTime: "5 min read"
-    }
+      excerpt:
+        'Learn how to layer different textures to add dimension and visual interest to any room in your home.',
+      image:
+        'https://images.unsplash.com/photo-1673201102066-b0599d45002b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080',
+      author: 'Emma Thompson',
+      date: 'Oct 25, 2025',
+      category: 'Design Tips',
+      readTime: '5 min read',
+    },
   };
 
-  const postId = params?.id || "1";
-  const post = blogPosts[postId as keyof typeof blogPosts] || blogPosts["1"];
+  const postId = ((params as any)?.id as string) ?? '1';
+  const post = blogPosts[postId as keyof typeof blogPosts] || blogPosts['1'];
 
   // Get related posts (other posts excluding current)
   const relatedPosts = Object.values(blogPosts)
-    .filter(p => p.id !== postId)
+    .filter((p) => p.id !== postId)
     .slice(0, 3);
 
   return (
@@ -217,8 +229,10 @@ export function BlogPost() {
             className="mb-8"
           >
             <Badge className="mb-4">{post.category}</Badge>
-            <h1 className="mb-6" style={{ fontSize: '2.5rem' }}>{post.title}</h1>
-            
+            <h1 className="mb-6" style={{ fontSize: '2.5rem' }}>
+              {post.title}
+            </h1>
+
             <div className="flex flex-wrap items-center gap-6 text-muted-foreground mb-8">
               <div className="flex items-center gap-2">
                 <User className="w-4 h-4" />
@@ -270,7 +284,9 @@ export function BlogPost() {
 
           {/* Related Posts */}
           <section className="border-t border-border pt-12">
-            <h2 className="mb-8" style={{ fontSize: '2rem' }}>Related Articles</h2>
+            <h2 className="mb-8" style={{ fontSize: '2rem' }}>
+              Related Articles
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {relatedPosts.map((relatedPost) => (
                 <Link key={relatedPost.id} href={`/blog/${relatedPost.id}`}>

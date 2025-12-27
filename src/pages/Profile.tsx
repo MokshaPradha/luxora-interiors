@@ -1,20 +1,20 @@
-import { useState } from "react";
-import { User, Package, MapPin, Heart, Settings, LogOut, X } from "lucide-react";
-import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
-import { Label } from "../components/ui/label";
-import { Card, CardContent } from "../components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
-import { Badge } from "../components/ui/badge";
-import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import { motion } from "motion/react";
-import { useApp } from "../context/AppContext";
-import { Link } from "wouter";
-import { toast } from "sonner@2.0.3";
+import { useState } from 'react';
+import { User, Package, MapPin, Heart, Settings, LogOut, X } from 'lucide-react';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
+import { Card, CardContent } from '../components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { Badge } from '../components/ui/badge';
+import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { motion } from 'motion/react';
+import { useApp } from '../context/AppContext';
+import { Link } from 'wouter';
+import { toast } from 'sonner';
 
 export function Profile() {
   const { user, isAuthenticated, logout, updateUserProfile, orders, cancelOrder } = useApp();
-  
+
   // Redirect to login if not authenticated
   if (!isAuthenticated || !user) {
     return (
@@ -28,9 +28,7 @@ export function Profile() {
             </p>
             <Link href="/login">
               <a>
-                <Button size="lg">
-                  Go to Login
-                </Button>
+                <Button size="lg">Go to Login</Button>
               </a>
             </Link>
           </div>
@@ -38,65 +36,65 @@ export function Profile() {
       </div>
     );
   }
-  
+
   const [userData, setUserData] = useState({
     name: user.name,
     email: user.email,
-    phone: user.phone || "+1 (555) 123-4567",
-    avatar: user.avatar || "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200"
+    phone: user.phone || '+1 (555) 123-4567',
+    avatar: user.avatar || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200',
   });
 
   const addresses = [
     {
-      id: "1",
-      type: "Home",
-      name: "John Doe",
-      address: "123 Design Street",
-      city: "New York, NY 10001",
-      phone: "+1 (555) 123-4567",
-      default: true
+      id: '1',
+      type: 'Home',
+      name: 'John Doe',
+      address: '123 Design Street',
+      city: 'New York, NY 10001',
+      phone: '+1 (555) 123-4567',
+      default: true,
     },
     {
-      id: "2",
-      type: "Office",
-      name: "John Doe",
-      address: "456 Business Ave",
-      city: "New York, NY 10002",
-      phone: "+1 (555) 987-6543",
-      default: false
-    }
+      id: '2',
+      type: 'Office',
+      name: 'John Doe',
+      address: '456 Business Ave',
+      city: 'New York, NY 10002',
+      phone: '+1 (555) 987-6543',
+      default: false,
+    },
   ];
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case "Delivered":
-        return "bg-green-100 text-green-800";
-      case "In Transit":
-        return "bg-blue-100 text-blue-800";
-      case "Processing":
-        return "bg-yellow-100 text-yellow-800";
-      case "Cancelled":
-        return "bg-red-100 text-red-800";
+      case 'Delivered':
+        return 'bg-green-100 text-green-800';
+      case 'In Transit':
+        return 'bg-blue-100 text-blue-800';
+      case 'Processing':
+        return 'bg-yellow-100 text-yellow-800';
+      case 'Cancelled':
+        return 'bg-red-100 text-red-800';
       default:
-        return "bg-gray-100 text-gray-800";
+        return 'bg-gray-100 text-gray-800';
     }
   };
-  
+
   const handleSaveProfile = (e: React.FormEvent) => {
     e.preventDefault();
     updateUserProfile(userData);
   };
-  
+
   const handleCancelOrder = (orderId: string, orderStatus: string) => {
-    if (orderStatus === "Delivered") {
-      toast.error("Cannot cancel a delivered order");
+    if (orderStatus === 'Delivered') {
+      toast.error('Cannot cancel a delivered order');
       return;
     }
-    if (orderStatus === "Cancelled") {
-      toast.info("Order is already cancelled");
+    if (orderStatus === 'Cancelled') {
+      toast.info('Order is already cancelled');
       return;
     }
-    if (confirm("Are you sure you want to cancel this order?")) {
+    if (confirm('Are you sure you want to cancel this order?')) {
       cancelOrder(orderId);
     }
   };
@@ -104,11 +102,10 @@ export function Profile() {
   return (
     <div className="py-12">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          <h1 className="mb-8" style={{ fontSize: '2.5rem' }}>My Profile</h1>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+          <h1 className="mb-8" style={{ fontSize: '2.5rem' }}>
+            My Profile
+          </h1>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
@@ -153,7 +150,11 @@ export function Profile() {
                     <Settings className="mr-2 w-5 h-5" />
                     Settings
                   </Button>
-                  <Button variant="ghost" className="w-full justify-start text-destructive hover:text-destructive" onClick={logout}>
+                  <Button
+                    variant="ghost"
+                    className="w-full justify-start text-destructive hover:text-destructive"
+                    onClick={logout}
+                  >
                     <LogOut className="mr-2 w-5 h-5" />
                     Logout
                   </Button>
@@ -207,7 +208,10 @@ export function Profile() {
                           onChange={(e) => setUserData({ ...userData, phone: e.target.value })}
                         />
                       </div>
-                      <Button type="submit" className="bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground">
+                      <Button
+                        type="submit"
+                        className="bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground"
+                      >
                         Save Changes
                       </Button>
                     </form>
@@ -239,11 +243,9 @@ export function Profile() {
                                 <p className="text-muted-foreground">Order #{order.id}</p>
                                 <p className="text-muted-foreground">{order.date}</p>
                               </div>
-                              <Badge className={getStatusColor(order.status)}>
-                                {order.status}
-                              </Badge>
+                              <Badge className={getStatusColor(order.status)}>{order.status}</Badge>
                             </div>
-                            
+
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                               {order.products.map((product) => (
                                 <div key={product.id} className="flex gap-3">
@@ -262,17 +264,19 @@ export function Profile() {
                                 </div>
                               ))}
                             </div>
-                            
+
                             <div className="flex justify-between items-center pt-4 border-t border-border">
                               <div>
                                 <p className="text-muted-foreground">{order.items} items</p>
                                 <p className="text-accent">${order.total.toFixed(2)}</p>
                               </div>
                               <div className="flex gap-2">
-                                <Button variant="outline" size="sm">Track Order</Button>
-                                {order.status !== "Delivered" && order.status !== "Cancelled" && (
-                                  <Button 
-                                    variant="outline" 
+                                <Button variant="outline" size="sm">
+                                  Track Order
+                                </Button>
+                                {order.status !== 'Delivered' && order.status !== 'Cancelled' && (
+                                  <Button
+                                    variant="outline"
                                     size="sm"
                                     onClick={() => handleCancelOrder(order.id, order.status)}
                                   >
@@ -309,8 +313,12 @@ export function Profile() {
                             <p className="text-muted-foreground">{address.phone}</p>
                           </div>
                           <div className="flex gap-2">
-                            <Button variant="outline" size="sm">Edit</Button>
-                            <Button variant="outline" size="sm">Delete</Button>
+                            <Button variant="outline" size="sm">
+                              Edit
+                            </Button>
+                            <Button variant="outline" size="sm">
+                              Delete
+                            </Button>
                           </div>
                         </div>
                       </CardContent>

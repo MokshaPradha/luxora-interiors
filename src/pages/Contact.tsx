@@ -1,56 +1,56 @@
-import { useState } from "react";
-import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
-import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
-import { Textarea } from "../components/ui/textarea";
-import { Label } from "../components/ui/label";
-import { Card, CardContent } from "../components/ui/card";
-import { motion } from "motion/react";
-import { toast } from "sonner@2.0.3";
+import { useState } from 'react';
+import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Textarea } from '../components/ui/textarea';
+import { Label } from '../components/ui/label';
+import { Card, CardContent } from '../components/ui/card';
+import { motion } from 'motion/react';
+import { toast } from 'sonner';
 
 export function Contact() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: ""
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    console.log("Contact form submitted:", formData);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    console.log('Contact form submitted:', formData);
     toast.success("Thank you for reaching out! We'll get back to you soon.");
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setFormData({ name: '', email: '', subject: '', message: '' });
     setIsSubmitting(false);
   };
 
   const contactInfo = [
     {
       icon: MapPin,
-      title: "Visit Us",
-      details: ["123 Design Street", "New York, NY 10001", "United States"]
+      title: 'Visit Us',
+      details: ['123 Design Street', 'New York, NY 10001', 'United States'],
     },
     {
       icon: Phone,
-      title: "Call Us",
-      details: ["+1 (555) 123-4567", "+1 (555) 987-6543"]
+      title: 'Call Us',
+      details: ['+1 (555) 123-4567', '+1 (555) 987-6543'],
     },
     {
       icon: Mail,
-      title: "Email Us",
-      details: ["hello@luxora.com", "support@luxora.com"]
+      title: 'Email Us',
+      details: ['hello@luxora.com', 'support@luxora.com'],
     },
     {
       icon: Clock,
-      title: "Business Hours",
-      details: ["Mon - Fri: 9:00 AM - 6:00 PM", "Sat: 10:00 AM - 4:00 PM", "Sun: Closed"]
-    }
+      title: 'Business Hours',
+      details: ['Mon - Fri: 9:00 AM - 6:00 PM', 'Sat: 10:00 AM - 4:00 PM', 'Sun: Closed'],
+    },
   ];
 
   return (
@@ -62,7 +62,9 @@ export function Contact() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="mb-4" style={{ fontSize: '2.5rem' }}>Get in Touch</h1>
+          <h1 className="mb-4" style={{ fontSize: '2.5rem' }}>
+            Get in Touch
+          </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Have questions about our products or services? We'd love to hear from you.
           </p>
@@ -106,7 +108,9 @@ export function Contact() {
           >
             <Card>
               <CardContent className="p-8">
-                <h2 className="mb-6" style={{ fontSize: '1.5rem' }}>Send us a Message</h2>
+                <h2 className="mb-6" style={{ fontSize: '1.5rem' }}>
+                  Send us a Message
+                </h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
@@ -155,14 +159,14 @@ export function Contact() {
                     />
                   </div>
 
-                  <Button 
-                    type="submit" 
-                    size="lg" 
+                  <Button
+                    type="submit"
+                    size="lg"
                     className="w-full bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground"
                     disabled={isSubmitting}
                   >
                     <Send className="mr-2 w-5 h-5" />
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </Button>
                 </form>
               </CardContent>

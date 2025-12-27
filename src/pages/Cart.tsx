@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { Link } from "wouter";
-import { Trash2, Plus, Minus, ArrowRight, ShoppingBag } from "lucide-react";
-import { Button } from "../components/ui/button";
-import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import { Card, CardContent } from "../components/ui/card";
-import { motion } from "motion/react";
-import { useApp } from "../context/AppContext";
+import { useState } from 'react';
+import { Link } from 'wouter';
+import { Trash2, Plus, Minus, ArrowRight, ShoppingBag } from 'lucide-react';
+import { Button } from '../components/ui/button';
+import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { Card, CardContent } from '../components/ui/card';
+import { motion } from 'motion/react';
+import { useApp } from '../context/AppContext';
 
 export function Cart() {
   const { cartItems, updateCartQuantity, removeFromCart } = useApp();
@@ -22,9 +22,7 @@ export function Cart() {
           <div className="max-w-md mx-auto text-center">
             <ShoppingBag className="w-20 h-20 text-muted mx-auto mb-6" />
             <h2 className="mb-4">Your Cart is Empty</h2>
-            <p className="text-muted-foreground mb-8">
-              Start shopping and add items to your cart
-            </p>
+            <p className="text-muted-foreground mb-8">Start shopping and add items to your cart</p>
             <Link href="/shop">
               <a>
                 <Button size="lg">
@@ -42,11 +40,10 @@ export function Cart() {
   return (
     <div className="py-12">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          <h1 className="mb-8" style={{ fontSize: '2.5rem' }}>Shopping Cart</h1>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+          <h1 className="mb-8" style={{ fontSize: '2.5rem' }}>
+            Shopping Cart
+          </h1>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -127,7 +124,7 @@ export function Cart() {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Shipping</span>
-                    <span>{shipping === 0 ? "FREE" : `$${shipping.toFixed(2)}`}</span>
+                    <span>{shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Tax (8%)</span>
@@ -136,14 +133,19 @@ export function Cart() {
                   <div className="border-t border-border pt-4">
                     <div className="flex justify-between">
                       <span>Total</span>
-                      <span className="text-accent" style={{ fontSize: '1.5rem' }}>${total.toFixed(2)}</span>
+                      <span className="text-accent" style={{ fontSize: '1.5rem' }}>
+                        ${total.toFixed(2)}
+                      </span>
                     </div>
                   </div>
                 </div>
 
                 <Link href="/checkout">
                   <a>
-                    <Button size="lg" className="w-full bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground mb-4">
+                    <Button
+                      size="lg"
+                      className="w-full bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground mb-4"
+                    >
                       Proceed to Checkout
                       <ArrowRight className="ml-2 w-5 h-5" />
                     </Button>

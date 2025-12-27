@@ -1,33 +1,33 @@
-import { useState } from "react";
-import { Link, useLocation } from "wouter";
-import { CreditCard, Wallet, DollarSign } from "lucide-react";
-import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
-import { Label } from "../components/ui/label";
-import { Card, CardContent } from "../components/ui/card";
-import { RadioGroup, RadioGroupItem } from "../components/ui/radio-group";
-import { motion } from "motion/react";
-import { useApp } from "../context/AppContext";
-import { toast } from "sonner@2.0.3";
+import { useState } from 'react';
+import { Link, useLocation } from 'wouter';
+import { CreditCard, Wallet, DollarSign } from 'lucide-react';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
+import { Card, CardContent } from '../components/ui/card';
+import { RadioGroup, RadioGroupItem } from '../components/ui/radio-group';
+import { motion } from 'motion/react';
+import { useApp } from '../context/AppContext';
+import { toast } from 'sonner';
 
 export function Checkout() {
   const { cartItems, clearCart, addOrder } = useApp();
   const [, setLocation] = useLocation();
-  const [paymentMethod, setPaymentMethod] = useState("card");
+  const [paymentMethod, setPaymentMethod] = useState('card');
   const [isProcessing, setIsProcessing] = useState(false);
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    address: "",
-    city: "",
-    state: "",
-    zipCode: "",
-    cardNumber: "",
-    cardName: "",
-    expiryDate: "",
-    cvv: ""
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    address: '',
+    city: '',
+    state: '',
+    zipCode: '',
+    cardNumber: '',
+    cardName: '',
+    expiryDate: '',
+    cvv: '',
   });
 
   const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -38,33 +38,36 @@ export function Checkout() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsProcessing(true);
-    
+
     // Simulate payment processing
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
     // Create order
     const newOrder = {
-      date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
-      status: "Processing",
+      date: new Date().toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+      }),
+      status: 'Processing',
       total: total,
       items: cartItems.reduce((sum, item) => sum + item.quantity, 0),
-      products: cartItems
+      products: cartItems,
     };
-    
+
     addOrder(newOrder);
-    toast.success("Order placed successfully!");
+    toast.success('Order placed successfully!');
     clearCart();
-    setLocation("/order-success");
+    setLocation('/order-success');
   };
 
   return (
     <div className="py-12">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          <h1 className="mb-8" style={{ fontSize: '2.5rem' }}>Checkout</h1>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+          <h1 className="mb-8" style={{ fontSize: '2.5rem' }}>
+            Checkout
+          </h1>
         </motion.div>
 
         <form onSubmit={handleSubmit}>
@@ -184,7 +187,7 @@ export function Checkout() {
                     </div>
                   </RadioGroup>
 
-                  {paymentMethod === "card" && (
+                  {paymentMethod === 'card' && (
                     <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="md:col-span-2">
                         <Label htmlFor="cardNumber">Card Number</Label>
@@ -193,7 +196,7 @@ export function Checkout() {
                           value={formData.cardNumber}
                           onChange={(e) => setFormData({ ...formData, cardNumber: e.target.value })}
                           placeholder="1234 5678 9012 3456"
-                          required={paymentMethod === "card"}
+                          required={paymentMethod === 'card'}
                         />
                       </div>
                       <div className="md:col-span-2">
@@ -203,7 +206,7 @@ export function Checkout() {
                           value={formData.cardName}
                           onChange={(e) => setFormData({ ...formData, cardName: e.target.value })}
                           placeholder="John Doe"
-                          required={paymentMethod === "card"}
+                          required={paymentMethod === 'card'}
                         />
                       </div>
                       <div>
@@ -213,7 +216,7 @@ export function Checkout() {
                           value={formData.expiryDate}
                           onChange={(e) => setFormData({ ...formData, expiryDate: e.target.value })}
                           placeholder="MM/YY"
-                          required={paymentMethod === "card"}
+                          required={paymentMethod === 'card'}
                         />
                       </div>
                       <div>
@@ -223,7 +226,7 @@ export function Checkout() {
                           value={formData.cvv}
                           onChange={(e) => setFormData({ ...formData, cvv: e.target.value })}
                           placeholder="123"
-                          required={paymentMethod === "card"}
+                          required={paymentMethod === 'card'}
                         />
                       </div>
                     </div>
@@ -245,7 +248,9 @@ export function Checkout() {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Shipping</span>
-                      <span className={shipping === 0 ? "text-accent" : ""}>{shipping === 0 ? "FREE" : `$${shipping.toFixed(2)}`}</span>
+                      <span className={shipping === 0 ? 'text-accent' : ''}>
+                        {shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`}
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Tax</span>
@@ -261,12 +266,17 @@ export function Checkout() {
                     </div>
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground mb-4" disabled={isProcessing}>
-                    {isProcessing ? "Processing..." : "Confirm Order"}
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground mb-4"
+                    disabled={isProcessing}
+                  >
+                    {isProcessing ? 'Processing...' : 'Confirm Order'}
                   </Button>
 
                   <p className="text-center text-muted-foreground">
-                    By placing this order, you agree to our{" "}
+                    By placing this order, you agree to our{' '}
                     <a href="#" className="text-accent hover:underline">
                       Terms & Conditions
                     </a>

@@ -1,15 +1,15 @@
-import { Link } from "wouter";
-import { Sofa, Armchair, Lamp, Bed, BookOpen, Grid3x3 } from "lucide-react";
-import { motion } from "motion/react";
+import { Link } from 'wouter';
+import { Sofa, Armchair, Lamp, Bed, BookOpen, Grid3x3 } from 'lucide-react';
+import { motion } from 'motion/react';
 
 export function CategoryNav() {
   const categories = [
-    { name: "All Products", icon: Grid3x3, filter: "" },
-    { name: "Sofas", icon: Sofa, filter: "Sofas" },
-    { name: "Chairs", icon: Armchair, filter: "Chairs" },
-    { name: "Tables", icon: BookOpen, filter: "Tables" },
-    { name: "Beds", icon: Bed, filter: "Beds" },
-    { name: "Lighting", icon: Lamp, filter: "Lighting" },
+    { name: 'All Products', icon: Grid3x3, filter: '' },
+    { name: 'Sofas', icon: Sofa, filter: 'Sofas' },
+    { name: 'Chairs', icon: Armchair, filter: 'Chairs' },
+    { name: 'Tables', icon: BookOpen, filter: 'Tables' },
+    { name: 'Beds', icon: Bed, filter: 'Beds' },
+    { name: 'Lighting', icon: Lamp, filter: 'Lighting' },
   ];
 
   return (
@@ -21,7 +21,10 @@ export function CategoryNav() {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {categories.map((category, index) => (
-            <Link key={category.name} href={category.filter ? `/shop?category=${category.filter}` : "/shop"}>
+            <Link
+              key={category.name}
+              href={category.filter ? `/shop?category=${category.filter}` : '/shop'}
+            >
               <a>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}

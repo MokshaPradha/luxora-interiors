@@ -1,98 +1,99 @@
-import { useState } from "react";
-import { Package, Users, DollarSign, TrendingUp, Plus, Pencil, Trash2 } from "lucide-react";
-import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
-import { Label } from "../components/ui/label";
-import { Card, CardContent } from "../components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
-import { Badge } from "../components/ui/badge";
-import { motion } from "motion/react";
-import { useApp } from "../context/AppContext";
+import { useState } from 'react';
+import { Package, Users, DollarSign, TrendingUp, Plus, Pencil, Trash2 } from 'lucide-react';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
+import { Card, CardContent } from '../components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { Badge } from '../components/ui/badge';
+import { motion } from 'motion/react';
+import { useApp } from '../context/AppContext';
 
 export function AdminDashboard() {
-  const { products, addProduct, updateProduct, deleteProduct, orders, updateOrderStatus } = useApp();
-  
+  const { products, addProduct, updateProduct, deleteProduct, orders, updateOrderStatus } =
+    useApp();
+
   const [newProduct, setNewProduct] = useState({
-    title: "",
-    price: "",
-    originalPrice: "",
-    category: "",
-    description: "",
-    material: "",
-    style: "",
-    brand: "",
-    image: "",
-    rating: "5",
-    reviews: "0"
+    title: '',
+    price: '',
+    originalPrice: '',
+    category: '',
+    description: '',
+    material: '',
+    style: '',
+    brand: '',
+    image: '',
+    rating: '5',
+    reviews: '0',
   });
-  
+
   const [editingProduct, setEditingProduct] = useState<string | null>(null);
   const [editForm, setEditForm] = useState({
-    title: "",
-    price: "",
-    originalPrice: "",
-    category: "",
-    description: "",
-    material: "",
-    style: "",
-    brand: "",
-    image: "",
-    rating: "",
-    reviews: ""
+    title: '',
+    price: '',
+    originalPrice: '',
+    category: '',
+    description: '',
+    material: '',
+    style: '',
+    brand: '',
+    image: '',
+    rating: '',
+    reviews: '',
   });
 
   const stats = [
     {
       icon: DollarSign,
-      label: "Total Revenue",
-      value: "$124,563",
-      change: "+12.5%",
-      positive: true
+      label: 'Total Revenue',
+      value: '$124,563',
+      change: '+12.5%',
+      positive: true,
     },
     {
       icon: Package,
-      label: "Total Orders",
+      label: 'Total Orders',
       value: orders.length.toString(),
-      change: "+8.2%",
-      positive: true
+      change: '+8.2%',
+      positive: true,
     },
     {
       icon: Users,
-      label: "Total Customers",
-      value: "3,847",
-      change: "+15.3%",
-      positive: true
+      label: 'Total Customers',
+      value: '3,847',
+      change: '+15.3%',
+      positive: true,
     },
     {
       icon: TrendingUp,
-      label: "Total Products",
+      label: 'Total Products',
       value: products.length.toString(),
-      change: "+2.1%",
-      positive: true
-    }
+      change: '+2.1%',
+      positive: true,
+    },
   ];
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case "Delivered":
-        return "bg-green-100 text-green-800";
-      case "In Transit":
-        return "bg-blue-100 text-blue-800";
-      case "Processing":
-        return "bg-yellow-100 text-yellow-800";
-      case "Cancelled":
-        return "bg-red-100 text-red-800";
+      case 'Delivered':
+        return 'bg-green-100 text-green-800';
+      case 'In Transit':
+        return 'bg-blue-100 text-blue-800';
+      case 'Processing':
+        return 'bg-yellow-100 text-yellow-800';
+      case 'Cancelled':
+        return 'bg-red-100 text-red-800';
       default:
-        return "bg-gray-100 text-gray-800";
+        return 'bg-gray-100 text-gray-800';
     }
   };
-  
+
   const handleAddProduct = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newProduct.title || !newProduct.price) {
       return;
     }
-    
+
     addProduct({
       title: newProduct.title,
       price: parseFloat(newProduct.price),
@@ -102,47 +103,47 @@ export function AdminDashboard() {
       material: newProduct.material,
       style: newProduct.style,
       brand: newProduct.brand,
-      image: newProduct.image || "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400",
+      image: newProduct.image || 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400',
       rating: parseFloat(newProduct.rating) || 5,
-      reviews: parseInt(newProduct.reviews) || 0
+      reviews: parseInt(newProduct.reviews) || 0,
     });
-    
+
     setNewProduct({
-      title: "",
-      price: "",
-      originalPrice: "",
-      category: "",
-      description: "",
-      material: "",
-      style: "",
-      brand: "",
-      image: "",
-      rating: "5",
-      reviews: "0"
+      title: '',
+      price: '',
+      originalPrice: '',
+      category: '',
+      description: '',
+      material: '',
+      style: '',
+      brand: '',
+      image: '',
+      rating: '5',
+      reviews: '0',
     });
   };
-  
+
   const handleEditProduct = (product: any) => {
     setEditingProduct(product.id);
     setEditForm({
       title: product.title,
       price: product.price.toString(),
-      originalPrice: product.originalPrice?.toString() || "",
-      category: product.category || "",
-      description: product.description || "",
-      material: product.material || "",
-      style: product.style || "",
-      brand: product.brand || "",
-      image: product.image || "",
+      originalPrice: product.originalPrice?.toString() || '',
+      category: product.category || '',
+      description: product.description || '',
+      material: product.material || '',
+      style: product.style || '',
+      brand: product.brand || '',
+      image: product.image || '',
       rating: product.rating.toString(),
-      reviews: product.reviews.toString()
+      reviews: product.reviews.toString(),
     });
   };
-  
+
   const handleUpdateProduct = (e: React.FormEvent) => {
     e.preventDefault();
     if (!editingProduct) return;
-    
+
     updateProduct(editingProduct, {
       title: editForm.title,
       price: parseFloat(editForm.price),
@@ -154,18 +155,18 @@ export function AdminDashboard() {
       brand: editForm.brand,
       image: editForm.image,
       rating: parseFloat(editForm.rating),
-      reviews: parseInt(editForm.reviews)
+      reviews: parseInt(editForm.reviews),
     });
-    
+
     setEditingProduct(null);
   };
-  
+
   const handleDeleteProduct = (id: string) => {
-    if (confirm("Are you sure you want to delete this product?")) {
+    if (confirm('Are you sure you want to delete this product?')) {
       deleteProduct(id);
     }
   };
-  
+
   const handleUpdateOrderStatus = (orderId: string, newStatus: string) => {
     updateOrderStatus(orderId, newStatus);
   };
@@ -173,12 +174,10 @@ export function AdminDashboard() {
   return (
     <div className="py-12 bg-secondary min-h-screen">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
-        >
-          <h1 className="mb-2" style={{ fontSize: '2.5rem' }}>Admin Dashboard</h1>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
+          <h1 className="mb-2" style={{ fontSize: '2.5rem' }}>
+            Admin Dashboard
+          </h1>
           <p className="text-muted-foreground">Manage your furniture store</p>
         </motion.div>
 
@@ -197,12 +196,18 @@ export function AdminDashboard() {
                     <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
                       <stat.icon className="w-6 h-6 text-accent" />
                     </div>
-                    <Badge className={stat.positive ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}>
+                    <Badge
+                      className={
+                        stat.positive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                      }
+                    >
                       {stat.change}
                     </Badge>
                   </div>
                   <p className="text-muted-foreground mb-1">{stat.label}</p>
-                  <p className="text-accent" style={{ fontSize: '1.75rem' }}>{stat.value}</p>
+                  <p className="text-accent" style={{ fontSize: '1.75rem' }}>
+                    {stat.value}
+                  </p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -254,7 +259,9 @@ export function AdminDashboard() {
                             </select>
                           </td>
                           <td className="py-4">
-                            <Button variant="outline" size="sm">View</Button>
+                            <Button variant="outline" size="sm">
+                              View
+                            </Button>
                           </td>
                         </tr>
                       ))}
@@ -271,7 +278,9 @@ export function AdminDashboard() {
                 <h2 className="mb-6">Manage Products</h2>
                 <div className="space-y-4">
                   {products.length === 0 ? (
-                    <p className="text-muted-foreground text-center py-8">No products added yet. Add your first product!</p>
+                    <p className="text-muted-foreground text-center py-8">
+                      No products added yet. Add your first product!
+                    </p>
                   ) : (
                     products.map((product) => (
                       <div key={product.id} className="border border-border rounded-lg p-4">
@@ -282,7 +291,9 @@ export function AdminDashboard() {
                                 <Label>Product Name</Label>
                                 <Input
                                   value={editForm.title}
-                                  onChange={(e) => setEditForm({ ...editForm, title: e.target.value })}
+                                  onChange={(e) =>
+                                    setEditForm({ ...editForm, title: e.target.value })
+                                  }
                                   required
                                 />
                               </div>
@@ -292,7 +303,9 @@ export function AdminDashboard() {
                                   type="number"
                                   step="0.01"
                                   value={editForm.price}
-                                  onChange={(e) => setEditForm({ ...editForm, price: e.target.value })}
+                                  onChange={(e) =>
+                                    setEditForm({ ...editForm, price: e.target.value })
+                                  }
                                   required
                                 />
                               </div>
@@ -302,7 +315,9 @@ export function AdminDashboard() {
                                   type="number"
                                   step="0.01"
                                   value={editForm.originalPrice}
-                                  onChange={(e) => setEditForm({ ...editForm, originalPrice: e.target.value })}
+                                  onChange={(e) =>
+                                    setEditForm({ ...editForm, originalPrice: e.target.value })
+                                  }
                                 />
                               </div>
                             </div>
@@ -311,28 +326,36 @@ export function AdminDashboard() {
                                 <Label>Category</Label>
                                 <Input
                                   value={editForm.category}
-                                  onChange={(e) => setEditForm({ ...editForm, category: e.target.value })}
+                                  onChange={(e) =>
+                                    setEditForm({ ...editForm, category: e.target.value })
+                                  }
                                 />
                               </div>
                               <div>
                                 <Label>Material</Label>
                                 <Input
                                   value={editForm.material}
-                                  onChange={(e) => setEditForm({ ...editForm, material: e.target.value })}
+                                  onChange={(e) =>
+                                    setEditForm({ ...editForm, material: e.target.value })
+                                  }
                                 />
                               </div>
                               <div>
                                 <Label>Style</Label>
                                 <Input
                                   value={editForm.style}
-                                  onChange={(e) => setEditForm({ ...editForm, style: e.target.value })}
+                                  onChange={(e) =>
+                                    setEditForm({ ...editForm, style: e.target.value })
+                                  }
                                 />
                               </div>
                               <div>
                                 <Label>Brand</Label>
                                 <Input
                                   value={editForm.brand}
-                                  onChange={(e) => setEditForm({ ...editForm, brand: e.target.value })}
+                                  onChange={(e) =>
+                                    setEditForm({ ...editForm, brand: e.target.value })
+                                  }
                                 />
                               </div>
                             </div>
@@ -342,14 +365,25 @@ export function AdminDashboard() {
                                 className="w-full px-3 py-2 bg-input-background border border-border rounded-md"
                                 rows={2}
                                 value={editForm.description}
-                                onChange={(e) => setEditForm({ ...editForm, description: e.target.value })}
+                                onChange={(e) =>
+                                  setEditForm({ ...editForm, description: e.target.value })
+                                }
                               />
                             </div>
                             <div className="flex gap-2">
-                              <Button type="submit" size="sm" className="bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground">
+                              <Button
+                                type="submit"
+                                size="sm"
+                                className="bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground"
+                              >
                                 Save Changes
                               </Button>
-                              <Button type="button" variant="outline" size="sm" onClick={() => setEditingProduct(null)}>
+                              <Button
+                                type="button"
+                                variant="outline"
+                                size="sm"
+                                onClick={() => setEditingProduct(null)}
+                              >
                                 Cancel
                               </Button>
                             </div>
@@ -358,28 +392,38 @@ export function AdminDashboard() {
                           <div className="flex justify-between items-start">
                             <div className="flex gap-4">
                               {product.image && (
-                                <img src={product.image} alt={product.title} className="w-20 h-20 object-cover rounded-md" />
+                                <img
+                                  src={product.image}
+                                  alt={product.title}
+                                  className="w-20 h-20 object-cover rounded-md"
+                                />
                               )}
                               <div>
                                 <h3 className="mb-1">{product.title}</h3>
                                 <p className="text-muted-foreground">${product.price.toFixed(2)}</p>
                                 <div className="flex gap-2 mt-2">
-                                  {product.category && <Badge variant="outline">{product.category}</Badge>}
-                                  {product.material && <Badge variant="outline">{product.material}</Badge>}
-                                  {product.brand && <Badge variant="outline">{product.brand}</Badge>}
+                                  {product.category && (
+                                    <Badge variant="outline">{product.category}</Badge>
+                                  )}
+                                  {product.material && (
+                                    <Badge variant="outline">{product.material}</Badge>
+                                  )}
+                                  {product.brand && (
+                                    <Badge variant="outline">{product.brand}</Badge>
+                                  )}
                                 </div>
                               </div>
                             </div>
                             <div className="flex gap-2">
-                              <Button 
-                                variant="outline" 
+                              <Button
+                                variant="outline"
                                 size="sm"
                                 onClick={() => handleEditProduct(product)}
                               >
                                 <Pencil className="w-4 h-4" />
                               </Button>
-                              <Button 
-                                variant="outline" 
+                              <Button
+                                variant="outline"
                                 size="sm"
                                 onClick={() => handleDeleteProduct(product.id)}
                               >
@@ -425,7 +469,7 @@ export function AdminDashboard() {
                       />
                     </div>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <Label htmlFor="originalPrice">Original Price</Label>
@@ -434,7 +478,9 @@ export function AdminDashboard() {
                         type="number"
                         step="0.01"
                         value={newProduct.originalPrice}
-                        onChange={(e) => setNewProduct({ ...newProduct, originalPrice: e.target.value })}
+                        onChange={(e) =>
+                          setNewProduct({ ...newProduct, originalPrice: e.target.value })
+                        }
                         placeholder="3299.00"
                       />
                     </div>
@@ -457,7 +503,7 @@ export function AdminDashboard() {
                       </select>
                     </div>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div>
                       <Label htmlFor="material">Material</Label>
@@ -487,7 +533,7 @@ export function AdminDashboard() {
                       />
                     </div>
                   </div>
-                  
+
                   <div>
                     <Label htmlFor="description">Description</Label>
                     <textarea
@@ -495,11 +541,13 @@ export function AdminDashboard() {
                       rows={4}
                       className="w-full px-3 py-2 bg-input-background border border-border rounded-md"
                       value={newProduct.description}
-                      onChange={(e) => setNewProduct({ ...newProduct, description: e.target.value })}
+                      onChange={(e) =>
+                        setNewProduct({ ...newProduct, description: e.target.value })
+                      }
                       placeholder="Product description..."
                     />
                   </div>
-                  
+
                   <div>
                     <Label htmlFor="image">Image URL</Label>
                     <Input
@@ -509,7 +557,7 @@ export function AdminDashboard() {
                       placeholder="https://images.unsplash.com/photo-..."
                     />
                   </div>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <Label htmlFor="rating">Rating (1-5)</Label>
@@ -535,8 +583,11 @@ export function AdminDashboard() {
                       />
                     </div>
                   </div>
-                  
-                  <Button type="submit" className="bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground">
+
+                  <Button
+                    type="submit"
+                    className="bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground"
+                  >
                     <Plus className="mr-2 w-5 h-5" />
                     Add Product
                   </Button>
