@@ -7,6 +7,18 @@ import { Label } from '../components/ui/label';
 import { Card, CardContent } from '../components/ui/card';
 import { motion } from 'motion/react';
 import { toast } from 'sonner';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+
+// Configure default Leaflet marker icons (fixes missing marker images in many bundlers)
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -174,19 +186,30 @@ export function Contact() {
           </motion.div>
         </div>
 
-        {/* Map */}
+        {/* Map (interactive) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="rounded-lg overflow-hidden border border-border"
         >
-          <div className="aspect-[21/9] bg-muted flex items-center justify-center">
-            <div className="text-center">
-              <MapPin className="w-12 h-12 text-accent mx-auto mb-4" />
-              <p className="text-muted-foreground">Interactive map would be displayed here</p>
-              <p className="text-muted-foreground">123 Design Street, New York, NY 10001</p>
-            </div>
+          <div className="aspect-[21/9] bg-muted">
+            <MapContainer
+              center={[40.7484, -73.9857]}
+              zoom={13}
+              scrollWheelZoom={false}
+              className="h-full w-full"
+            >
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Marker position={[40.7484, -73.9857]}>
+                <Popup>
+                  123 Design Street<br />New York, NY 10001
+                </Popup>
+              </Marker>
+            </MapContainer>
           </div>
         </motion.div>
       </div>
