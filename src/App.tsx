@@ -50,7 +50,7 @@ function AppContent() {
           <Route component={NotFound} />
         </Switch>
       </main>
-
+      
       <Footer />
       <Toaster />
     </div>
